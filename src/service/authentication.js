@@ -17,11 +17,11 @@ class AuthService {
   }
   logout() {
     const auth = getAuth();
-    return signOut(auth);
+    signOut(auth);
   }
   signedInUser(callback) {
     const auth = getAuth();
-    return onAuthStateChanged(auth, (user) => user && callback());
+    onAuthStateChanged(auth, (user) => callback(user));
   }
 }
 
