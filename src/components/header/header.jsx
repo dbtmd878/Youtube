@@ -38,7 +38,7 @@ const Logout = styled.button`
   cursor: pointer;
 `;
 
-const Header = ({ onLogout }) => {
+const Header = ({ onLogout, searchVideos }) => {
   return (
     <Head>
       <TitleBox>
@@ -46,7 +46,7 @@ const Header = ({ onLogout }) => {
         <h1>YouTube</h1>
       </TitleBox>
       <SearchBox>
-        <Search />
+        <Search searchVideos={searchVideos} />
       </SearchBox>
       <InfoBox>
         {onLogout && <Logout onClick={onLogout}>Logout</Logout>}

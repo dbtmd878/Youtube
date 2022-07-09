@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { AiOutlineSearch } from "react-icons/ai";
 
@@ -24,13 +24,31 @@ const Button = styled.button`
   padding-top: 0.3rem;
 `;
 
-const Search = () => {
+const Search = ({ searchVideos }) => {
+  const input = useRef(null);
+  const searchFnc = (value) => {
+    if (value === "") {
+      return;
+    }
+    searchVideos(value);
+    input.current.value = "";
+  };
+
+  const enterFnc = (e) => {
+    if (e.code !== "Enter") {
+      return;
+    }
+    searchFnc(input.current.value);
+  };
+  const clickFnc = () => {
+    searchFnc(input.current.value);
+  };
   return (
     <SearchBox>
       <InputBox>
-        <Input type="text" />
+        <Input type="text" ref={input} onKeyDown={enterFnc} />
       </InputBox>
-      <Button>
+      <Button onClick={clickFnc}>
         <AiOutlineSearch />
       </Button>
     </SearchBox>

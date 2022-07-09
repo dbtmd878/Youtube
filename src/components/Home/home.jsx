@@ -11,7 +11,7 @@ const HomeSection = styled.section`
   height: 100vh;
 `;
 
-const Home = ({ videos }) => {
+const Home = ({ videos, searchVideos }) => {
   const navigate = useNavigate();
   const authService = new AuthService();
   const onLogout = () => {
@@ -27,7 +27,7 @@ const Home = ({ videos }) => {
 
   return (
     <HomeSection>
-      <Header onLogout={onLogout} />
+      <Header onLogout={onLogout} searchVideos={searchVideos} />
       <List videos={videos} />
       <Footer />
     </HomeSection>

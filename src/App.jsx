@@ -18,12 +18,19 @@ const App = ({ youtube }) => {
       .mostPopular()
       .then((result) => setVideos(result.items));
   }, []);
-
+  const searchVideos = (value) => {
+    youtube //
+      .search(value)
+      .then((result) => setVideos(result.items));
+  };
   return (
     <AppDiv>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/home" element={<Home videos={videos} />} />
+        <Route
+          path="/home"
+          element={<Home videos={videos} searchVideos={searchVideos} />}
+        />
       </Routes>
     </AppDiv>
   );

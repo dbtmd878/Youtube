@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+// Css
 const UlBox = styled.ul`
   width: 100%;
   flex-wrap: wrap;
@@ -8,21 +9,18 @@ const UlBox = styled.ul`
   padding-left: 0;
   list-style: none;
 `;
-
 const LiBox = styled.li`
   box-sizing: border-box;
   width: 50%;
   padding: 0.5rem;
-  cursor: pointer;
 `;
-
 const VideoBox = styled.div`
   border: 1px solid black;
+  cursor: pointer;
   display: flex;
   height: 100%;
   width: 100%;
 `;
-
 const MetaData = styled.div`
   width: 100%;
   margin-left: 0.8rem;
@@ -46,6 +44,10 @@ const Thumbnails = styled.img`
 const List = ({ videos }) => {
   const show = () => {
     return videos.map((item) => {
+      if (typeof item.id == "object") {
+        item.id = item.id[Object.keys(item.id)[1]];
+      }
+
       return (
         <LiBox key={item.id}>
           <VideoBox>
